@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-.logo {
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -31,7 +31,7 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
+} */
 
 .card {
   padding: 2em;
@@ -39,4 +39,50 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.articlecard {
+  background-color: gray;
+  margin: 18px;
+  color: black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 47%;
+  height: inherit;
+
+}
+
+.articlecard img {
+  width: 70%;
+  height: 250px;
+  margin: 16px auto 8px auto;
+  display: block;  
+  /* border: 0.1px solid blue;   */
+  padding: 8px;  
+  border-radius: 15px;
+}
+
+.articlecard h4 {
+  margin: 4px;;
+}
+
+.articlecard h3 {
+  margin: 4px;;
+}
+
+.articlecard h5 {
+  margin-bottom: 16px;
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.articlecard button {
+  margin: 8px;
 }
