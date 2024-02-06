@@ -34,6 +34,9 @@ function ArticleHolder () {
                             <h4 key="article-topic">Topic: {article.topic}</h4>
                             <h4 key="article-votes">Votes: {article.votes}</h4>
                             <h5 key="article-comment_count">Comments: {article.comment_count}</h5>
+                            <Routes>
+                                <Route path="/article" element={<Article />}/>        
+                            </Routes>
                         </div>
                         );
                     })}
