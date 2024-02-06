@@ -1,24 +1,24 @@
-// import axios from 'axios';
 import {useState, useEffect} from 'react';
-// import { Routes, Route } from "react-router-dom";
-// import Article from './Article';
-
+import { Link } from 'react-router-dom';
+import { getArticles } from '../utils/api';
 
 
 function ArticleHolder () {
     const [articles, setArticles] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        fetch(
-          `https://nc-news-by-victor.onrender.com/api/articles`
-        )
-          .then((response) => {
-            return response.json();
-          })
-          .then((result) => {
-            setArticles(result.articles);
-          });
-      }, []);
+  useEffect(() => {
+    getArticles()
+    .then((response) => {
+        setArticles(response.articles);
+        setIsLoading(false);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+  }, []);
+
+      if (isLoading) return <p>Loading...</p>
 
       return (
         <main>
@@ -26,24 +26,22 @@ function ArticleHolder () {
             <section className="articles">
                 {articles.map((article) => {
                     return (
-                        <div className="articlecard" key={article.article_id}>
-                            <img key="artciel_image" src={article.article_img_url} alt="image of an article"/>
-                            <h5 key="article-title">{article.title}</h5>
-                            <h4 key="article-author">Author: {article.author}</h4>
-                            <h4 key="article-topic">Topic: {article.topic}</h4>
-                            <h4 key="article-votes">Votes: {article.votes}</h4>
-                            <h5 key="article-comment_count">Comments: {article.comment_count}</h5>
-                            {/* <Routes>
-                                <Route path="/article" element={<Article />}/>        
-                            </Routes> */}
+                        <div className="articlescard" key={article.article_id}>
+                            <img key="artciles_image" src={article.article_img_url} alt="image of an article"/>
+                            <h3 key="articles-title">{article.title}</h3>
+                            <h4 key="articles-author">Author: {article.author}</h4>
+                            <h4 key="articles-topic">Topic: {article.topic}</h4>
+                            <h4 key="articles-votes">Votes: {article.votes}</h4>
+                            <h5 key="articles-comment_count">Comments: {article.comment_count}</h5>
+                            <Link to={`/articles/${article.article_id}`} key="article-link">
+                                <button key="articles-button">View</button>
+                            </Link>
                         </div>
                         );
                     })}
             </section>
         </main>
     )
-
-
 }
 
 export default ArticleHolder
