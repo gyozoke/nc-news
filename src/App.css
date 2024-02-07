@@ -99,11 +99,6 @@
   float: bottom;
 }
 
-.article {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
 
 .articlecard {
   background-color: gray;
@@ -112,8 +107,9 @@
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  width: 800px;
+  width: 98%;
   height: inherit;
+  position: relative; 
 }
 
 .articlecard img {
@@ -137,4 +133,35 @@
 .articlecard h4 {
   margin-bottom: 16px;
   margin-top: 8px;
+}
+
+.comments {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.commentscards {
+  background-color: gray;
+  margin: 18px;
+  color: black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 47%;
+  height: inherit;
+}
+
+.showcommentsbutton {
+  margin: 16px auto 16px auto;
+  width: 96%;
+}
+
+.commentscards h5 {
+  width: 90%;
+  margin: 16px auto 2px auto;
+}
+
+.commentscards p {
+  margin: 4px auto 8px auto;
 }
