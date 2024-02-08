@@ -1,13 +1,12 @@
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { getArticleById, getComments } from '../utils/api';
-import Expandable from "./Expandable";
+import { getArticleById } from '../utils/api';
+import Comments from './Comments';
+import VoteAdder from './VoteAdder';
 
 function Article () {
     const { id } = useParams();
-    
     const [article, setArticle] = useState({});
-    const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -21,17 +20,6 @@ function Article () {
         })
       }, [id]);
 
-      useEffect(() => {
-        getComments(id)
-        .then((response) => {
-            // console.log(response.comments)
-            setComments(response.comments);
-            setIsLoading(false);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-      }, [id]);
 
 
       if (isLoading) return <p>Loading...</p>;
@@ -48,23 +36,12 @@ function Article () {
                     <h3 key="article-topic">Topic: {article.topic}</h3>
                     <h3 key="article-votes">Votes: {article.votes}</h3>
                     <h4 key="article-comment_count">Comments: {article.comment_count}</h4>
+                    <VoteAdder article={article} setArticle={setArticle}/>
                 </div>
             </section>
-            <Expandable>
-            <section className="comments">
-            {comments.map((comment) => {
-                return (
-                    <div className="commentscards" key={comment.comment_id}>
-                          <h5 key="comment-body">{comment.body}</h5>
-                          <p key="comment-author">By {comment.author}</p>
-                          <p key="comment-vote">Votes: {comment.votes}</p>
-                        </div>
-                        );
-                    })}
-            </section>
-            </Expandable>
+            <Comments />
         </main>        
-        ) 
+   ) 
 }
 
 export default Article;

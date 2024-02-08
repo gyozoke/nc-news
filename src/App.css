@@ -5,6 +5,7 @@
   text-align: center;
 }
 
+
 /* .logo {
   height: 6em;
   padding: 1.5em;
@@ -141,6 +142,10 @@
   width: 100%;
 }
 
+.comments p {
+  margin: 4px auto 8px auto;
+}
+
 .commentscards {
   background-color: gray;
   margin: 18px;
@@ -164,4 +169,18 @@
 
 .commentscards p {
   margin: 4px auto 8px auto;
+}
+
+.votebuttonup {
+  margin: 8px;
+  position: absolute;
+  left: 24px;
+  bottom: 16px;
+}
+
+.votebuttondown {
+  margin: 8px;
+  position: absolute;
+  left: 92px;
+  bottom: 16px;
 }
