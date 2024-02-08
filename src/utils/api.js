@@ -23,3 +23,11 @@ export function getComments (id) {
         return response.data;
     })
 }
+
+export function incraseVote (id, vote) {
+    return axios
+    .patch(`https://nc-news-by-victor.onrender.com/api/articles/${id}`, { inc_votes: vote } )
+    .then((response) => {
+        return response.data.vote;
+    })
+}
