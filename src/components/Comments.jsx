@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { getComments } from '../utils/api';
 import Expandable from "./Expandable";
+import CommentAdder from './CommenAdder';
 
 function Comments () {
     const { id } = useParams();
@@ -24,6 +25,7 @@ function Comments () {
     
     return (
     <Expandable>
+       <CommentAdder setComments={setComments} />
       <section className="comments">
         {comments.length === 0 ? (
           <p>No comment on this article yet</p>
