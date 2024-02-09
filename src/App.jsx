@@ -4,6 +4,7 @@ import Header from './components/Header'
 import ArticleHolder from './components/ArticleHolder'
 import Article from './components/Article'
 import { Routes, Route, Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

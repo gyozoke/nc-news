@@ -36,7 +36,7 @@ function Article () {
                     <h3 key="article-topic">Topic: {article.topic}</h3>
                     <h3 key="article-votes">Votes: {article.votes}</h3>
                     <h4 key="article-comment_count">Comments: {article.comment_count}</h4>
-                    <VoteAdder article={article} setArticle={setArticle}/>
+                    <VoteAdder setArticle={setArticle} article={article} />
                 </div>
             </section>
             <Comments />
