@@ -39,7 +39,7 @@ function Article () {
                     <VoteAdder setArticle={setArticle} article={article} />
                 </div>
             </section>
-            <Comments />
+            <Comments setArticle={setArticle}/>
         </main>        
    ) 
 }

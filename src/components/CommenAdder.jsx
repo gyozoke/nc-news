@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 
 
-function CommentAdder (setComments) {
+function CommentAdder ({setComments, setArticle}) {
     const {id} = useParams();
     const [users, setUsers] = useState([]);
     const [addComment, setAddComment] = useState("");
@@ -32,16 +32,20 @@ function CommentAdder (setComments) {
     
       function handleSubmit(event) {
         event.preventDefault();
+
     
         postComment(id, selectedUser, addComment)
           .then((response) => {
             setComments((currentComments) => {
-                return [response, ...currentComments]
+                return [response.comment, ...currentComments]
             })
         })
         .catch((err) => {
             console.log(err)
         });
+        setArticle((currentArticle) => {
+            return {...currentArticle}
+        })
         setSelectedUser("");
         setAddComment("");
         }

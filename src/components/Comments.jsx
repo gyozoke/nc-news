@@ -4,7 +4,7 @@ import { getComments } from '../utils/api';
 import Expandable from "./Expandable";
 import CommentAdder from './CommenAdder';
 
-function Comments () {
+function Comments ({setArticle}) {
     const { id } = useParams();
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -20,12 +20,14 @@ function Comments () {
             setIsLoading(false);
         })
       }, [id]);
+
+    
     
       if (isLoading) return <p>Loading...</p>;
     
     return (
     <Expandable>
-       <CommentAdder setComments={setComments} />
+       <CommentAdder setComments={setComments} setArticle={setArticle} />
       <section className="comments">
         {comments.length === 0 ? (
           <p>No comment on this article yet</p>
