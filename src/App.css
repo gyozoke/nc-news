@@ -200,3 +200,37 @@
   margin: 16px auto 16px auto;
   width: 100%;
 }
+
+@media only screen and (max-width: 768px) {
+  #homebutton {
+    position: static; /* Remove absolute positioning for smaller screens */
+    margin-top: 10px; /* Adjust margin for better spacing */
+    text-align: center; /* Center the home button */
+  }
+  .articlescard,
+  .commentscards {
+    width: 100%;
+  }
+
+  .votebuttonup,
+  .votebuttondown {
+    position: static; /* Remove absolute positioning for vote buttons on smaller screens */
+    margin: 8px auto; /* Adjust margin for better spacing */
+  }
+}
+
+/* Media query for tablets */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .articlescard,
+  .commentscards {
+    width: 48%;
+  }
+}
+
+/* Media query for larger screens */
+@media only screen and (min-width: 1025px) {
+  .articlescard,
+  .commentscards {
+    width: 47%;
+  }
+}

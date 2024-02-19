@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { getComments } from '../utils/api';
+import { getComments, deleteComment } from '../utils/api';
 import Expandable from "./Expandable";
 import CommentAdder from './CommenAdder';
 
@@ -8,6 +8,7 @@ function Comments ({setArticle}) {
     const { id } = useParams();
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [feedbackMsg, setFeedbackMsg] = useState("");
 
     useEffect(() => {
         getComments(id)
@@ -21,7 +22,19 @@ function Comments ({setArticle}) {
         })
       }, [id]);
 
-    
+      function handleDelete(commentId) {
+        deleteComment(commentId)
+          .then(() => {
+            setFeedbackMsg("Deleted!");
+            setComments((prevComments) => {
+              return prevComments.filter((comment) => comment.comment_id !== commentId);
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            setFeedbackMsg("Oops, something went wrong! Couldn't delete your comment.");
+          });
+      }
     
       if (isLoading) return <p>Loading...</p>;
     
@@ -37,6 +50,7 @@ function Comments ({setArticle}) {
               <h5 key="comment-body">{comment.body}</h5>
               <p key="comment-author">By {comment.author}</p>
               <p key="comment-vote">Votes: {comment.votes}</p>
+              <button onClick={() => handleDelete(comment.comment_id)}>delete comment</button>
             </div>
           ))
         )}

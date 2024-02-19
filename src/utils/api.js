@@ -42,8 +42,14 @@ export function getUsers () {
 
 export function postComment (id, user, addComment) {
     return axios.
-    post(` https://nc-news-by-victor.onrender.com/api/articles/${id}/comments`, { username: user, body: addComment })
+    post(`https://nc-news-by-victor.onrender.com/api/articles/${id}/comments`, { username: user, body: addComment })
     .then((response) => {
         return response.data;
     })
+}
+
+export function deleteComment (comment_id) {
+    return axios
+    .delete(`https://nc-news-by-victor.onrender.com/api/comments/${comment_id}`)
+    .catch((err) => {});
 }
